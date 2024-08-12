@@ -2,8 +2,8 @@ import { ClientsModule, Transport } from '@nestjs/microservices';
 import { firstValueFrom } from 'rxjs';
 import { createHarness } from './harness';
 import { EventEmitter } from 'node:events';
-import { MemoryTransportServer } from '../src/server';
-import { MemoryTransportModule } from '../src/module';
+import { MemoryTransportServer } from '../src';
+import { MemoryClientsModule } from '../src';
 
 const transports = [
   {
@@ -12,11 +12,14 @@ const transports = [
       const emitter = new EventEmitter();
       const strategy = new MemoryTransportServer(emitter);
       return {
-        appClient: MemoryTransportModule.register('HELLO_SERVICE', emitter),
-        microserviceClient: MemoryTransportModule.register(
-          'PONG_SERVICE',
+        appClient: MemoryClientsModule.register({
+          name: 'HELLO_SERVICE',
           emitter,
-        ),
+        }),
+        microserviceClient: MemoryClientsModule.register({
+          name: 'PONG_SERVICE',
+          emitter,
+        }),
         microserviceOptions: {
           strategy,
         },

@@ -36,5 +36,5 @@ export class MemoryTransportClient extends ClientProxy {
     }
   }
 
-  public subscribeToResponseOf(pattern: any): void {} // this is needed to comply with the KafkaClient interface
+  public subscribeToResponseOf(): void {} // this is needed to comply with the KafkaClient interface
 }

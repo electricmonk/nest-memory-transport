@@ -44,7 +44,7 @@ async function runApp(appClient: DynamicModule) {
   const appTestingModule = await Test.createTestingModule({
     imports: [AppModule.register(appClient)],
   }).compile();
-  return await appTestingModule.createNestApplication({}).init();
+  return await appTestingModule.createNestApplication().init();
 }
 
 export async function createHarness({
