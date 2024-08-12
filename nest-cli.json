@@ -1,24 +1,15 @@
 {
   "$schema": "https://json.schemastore.org/nest-cli",
   "collection": "@nestjs/schematics",
-  "sourceRoot": "apps/e2e-test/src",
+  "sourceRoot": ".",
   "compilerOptions": {
     "deleteOutDir": true,
-    "webpack": false,
-    "tsConfigPath": "apps/e2e-test/tsconfig.app.json"
+    "builder": "tsc",
+    "tsConfigPath": "tsconfig.build.json"
   },
   "monorepo": true,
   "root": "apps/e2e-test",
   "projects": {
-    "e2e-test": {
-      "type": "application",
-      "root": "apps/e2e-test",
-      "entryFile": "main",
-      "sourceRoot": "apps/e2e-test/src",
-      "compilerOptions": {
-        "tsConfigPath": "apps/e2e-test/tsconfig.app.json"
-      }
-    },
     "app": {
       "type": "application",
       "root": "apps/app",
@@ -44,7 +35,7 @@
       "sourceRoot": "libs/memory-transport/src",
       "compilerOptions": {
         "tsConfigPath": "libs/memory-transport/tsconfig.lib.json",
-        "deleteOutDir": true
+        "builder": "tsc"
       }
     }
   }
