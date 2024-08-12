@@ -119,7 +119,7 @@ Then in your test, initialize the same app with the memory transport:
 ```typescript
 const appTestingModule = await Test.createTestingModule({ 
   imports: [AppModule.register(MemoryClientsModule.register({
-    name: 'HELLO_SERVICE',
+    name: 'KAFKA_CLIENT',
     emitter, // the same emitter declared earlier, shared between all microservices and their clients
   }))],
 }).compile();
