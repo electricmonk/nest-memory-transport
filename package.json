@@ -1,13 +1,13 @@
 {
   "name": "nest-memory-transport",
-  "version": "0.0.1",
+  "version": "1.0.0",
   "description": "",
   "main": "dist/libs/memory-transport/index.js",
   "scripts": {
     "build": "nest build memory-transport",
     "format": "prettier --write \"apps/**/*.ts\" \"libs/**/*.ts\"",
     "lint": "eslint \"{src,apps,libs,test}/**/*.ts\" --fix",
-    "test:e2e": "jest --config libs/memory-transport/test/jest-e2e.json"
+    "test": "jest --config libs/memory-transport/test/jest-e2e.json"
   },
   "files": [
     "lib",
