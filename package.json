@@ -1,6 +1,6 @@
 {
   "name": "nest-memory-transport",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "",
   "main": "dist/libs/memory-transport/index.js",
   "scripts": {
@@ -10,7 +10,7 @@
     "test": "jest --config libs/memory-transport/test/jest-e2e.json"
   },
   "files": [
-    "lib",
+    "dist",
     "README.md",
     "LICENSE"
   ],
