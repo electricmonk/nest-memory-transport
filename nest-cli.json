@@ -43,7 +43,8 @@
       "entryFile": "index",
       "sourceRoot": "libs/memory-transport/src",
       "compilerOptions": {
-        "tsConfigPath": "libs/memory-transport/tsconfig.lib.json"
+        "tsConfigPath": "libs/memory-transport/tsconfig.lib.json",
+        "deleteOutDir": true
       }
     }
   }
