@@ -22,6 +22,14 @@ export class AppController {
     this.logger.log(`pinged ${name}`);
   }
 
+  @Get('reverse')
+  async reverse(@Query('name') name: string) {
+    await this.client.emit('payload.topic', {
+      name,
+      reversedName: name.split('').reverse().join(''),
+    });
+  }
+
   async onModuleInit() {
     await this.client.subscribeToResponseOf('hello.topic');
     await this.client.connect();

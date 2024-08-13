@@ -1,20 +1,25 @@
 import { Controller, DynamicModule, Logger } from '@nestjs/common';
 import { ReplaySubject } from 'rxjs';
-import { EventPattern } from '@nestjs/microservices';
+import { EventPattern, Payload } from '@nestjs/microservices';
 import { Test } from '@nestjs/testing';
 import { MicroserviceModule } from '../../../apps/microservice/src/microservice.module';
 import { AppModule } from '../../../apps/app/src/app.module';
 import * as request from 'supertest';
+import { NameWithReverse } from '../../../apps/microservice/src/microservice.controller';
 
 @Controller()
 class TestConsumer {
   pongs = new ReplaySubject<string>();
-  private readonly logger = new Logger(TestConsumer.name);
+  payloads = new ReplaySubject<NameWithReverse>();
 
   @EventPattern('pong.topic')
   onPong(from: string) {
-    this.logger.log(`received pong from ${from}`);
     this.pongs.next(from);
+  }
+
+  @EventPattern('payload.response.topic')
+  onPayload(@Payload() name: NameWithReverse) {
+    this.payloads.next(name);
   }
 }
 

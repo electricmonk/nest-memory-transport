@@ -94,4 +94,19 @@ describe.each(transports)('$transport Transport', ({ makeClients }) => {
 
     await close();
   }, 60_000);
+
+  it('supports @Payload decorator', async () => {
+    const { app, close, testConsumer } = await createHarness(makeClients());
+
+    const name = 'Inigo';
+    await app.get('/reverse').query({ name }).expect(200);
+
+    const payload = await firstValueFrom(testConsumer.payloads);
+    expect(payload).toStrictEqual({
+      name,
+      reversedName: name.split('').reverse().join(''),
+    });
+
+    await close();
+  }, 60_000);
 });
