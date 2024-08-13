@@ -1,4 +1,4 @@
-import { Controller, DynamicModule, Logger } from '@nestjs/common';
+import { Controller, DynamicModule } from '@nestjs/common';
 import { ReplaySubject } from 'rxjs';
 import { EventPattern, Payload } from '@nestjs/microservices';
 import { Test } from '@nestjs/testing';

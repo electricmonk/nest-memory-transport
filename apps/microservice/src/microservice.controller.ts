@@ -1,4 +1,4 @@
-import { Controller, Inject, Logger } from '@nestjs/common';
+import { Controller, Inject } from '@nestjs/common';
 import {
   ClientKafka,
   EventPattern,
